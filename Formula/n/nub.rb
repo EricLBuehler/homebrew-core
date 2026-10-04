@@ -1,8 +1,8 @@
 class Nub < Formula
   desc "Fast TypeScript runtime and package manager that augments Node"
   homepage "https://nubjs.com"
-  url "https://github.com/nubjs/nub/archive/refs/tags/v0.9.5.tar.gz"
-  sha256 "334a0fa057149df3e08b54fc393dc10b29bb0aa6cb22f38f2a439f231594ce5b"
+  url "https://github.com/nubjs/nub/archive/refs/tags/v0.9.6.tar.gz"
+  sha256 "cf82aae75a8cc6193212d42298be5d0bd921ec5dc19d91120b7eb408238d62d0"
   license "MIT"
 
   livecheck do
@@ -11,11 +11,12 @@ class Nub < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_golden_gate: "bb5d94e472e243441b9a68607c1277bc9a36694cfe233ef7bd52b6cf3ad2ebce"
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:       "9297094235d113275ba8e940b6a0ed23817f21314d168c780a22b663514e336f"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia:     "4e28e331d347dba809035c3fd2be54684848a63a00814d750bd390666554a981"
-    sha256 cellar: :any,                 arm64_linux:       "310d1d461bf69d48261aa0358ec82e49faa227a1a996442b55f000778256b158"
-    sha256 cellar: :any,                 x86_64_linux:      "af4264d01b974bdc8286118c6f4cd6712c536a8b0d9eac47b2d46792847fb9f2"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_golden_gate: "73cbbfe35d7041c36bed9921335dd49742f335416d4a050dae323ed6ba392e1a"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:       "becfb1731e6aa9f208624102bbdbccdbee7e19792393ae69a10f658dd6fe04ce"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia:     "b9fab4319fc66ff1389348840ec61c2230c3a358b7a832ed018791bd3b97b4a4"
+    sha256 cellar: :any,                 arm64_linux:       "c592d907e6241e80a71b98fff80bc5ffb332c7853fec7edc8b3bde7e87971398"
+    sha256 cellar: :any,                 x86_64_linux:      "114d5188b24bf901747b091c4daf567680c7d66fdd76893d7ebd43bcdf3de46e"
   end
 
   depends_on "cmake" => :build
@@ -52,11 +53,13 @@ class Nub < Formula
 
     system "cargo", "install", *std_cargo_args(path: "crates/nub-cli", features: ["embed-runtime"])
     bin.install_symlink bin/"nub" => "nubx"
+    bin.install_symlink bin/"nub" => "nubr"
   end
 
   test do
     assert_match version.to_s, shell_output("#{bin}/nub --version")
     assert_match "Usage: nub nubx", shell_output("#{bin}/nubx --help")
+    assert_equal version.to_s, shell_output("#{bin}/nubr --version").strip
 
     (testpath/"package.json").write <<~JSON
       {

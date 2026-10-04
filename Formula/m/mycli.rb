@@ -3,16 +3,16 @@ class Mycli < Formula
 
   desc "CLI for MySQL with auto-completion and syntax highlighting"
   homepage "https://www.mycli.net/"
-  url "https://files.pythonhosted.org/packages/f1/4c/a544ca9fda14bd62ac367243c96aedd8bd928b681972f1b438a3f37bf5d3/mycli-2.26.0.tar.gz"
-  sha256 "5d9baefc4884ee1cf880bf46df8d8eb7165f0b2552595746fcc887787266cfbc"
+  url "https://files.pythonhosted.org/packages/92/9f/7041747db883d8c82c223a3cbf0534948d35922075982feeac4946484234/mycli-2.28.0.tar.gz"
+  sha256 "965710d15acf40cbd141bfbabaa9fe9da287fbe34ecbfbe62d607be19ec3541d"
   license "BSD-3-Clause"
 
   bottle do
-    sha256 cellar: :any, arm64_golden_gate: "69a796038ce59ed22289c02aea623928ccd1aca0b8b84c74f14f0935374247c6"
-    sha256 cellar: :any, arm64_tahoe:       "716c097cb94f8dc314c105ce259a21b56919d9d7ef5456bc392017a8f98e0ea4"
-    sha256 cellar: :any, arm64_sequoia:     "e4232f937cf3a9ac5dcde3464c0aa6541abd2162e809ae699a81ba68df841c5c"
-    sha256 cellar: :any, arm64_linux:       "5a9023e4bdfafca98f5a0bd75eb885d6e10558e97f72d5d6edca0e593ce25906"
-    sha256 cellar: :any, x86_64_linux:      "2e4707efd6ba2774a3c25f2c611b193fa7a2beaae6c66445c5f6beda7185ef89"
+    sha256 cellar: :any, arm64_golden_gate: "76e94979c022215c99f0118a42ec87709f573b7e9b0f6b2262b939db49b9f508"
+    sha256 cellar: :any, arm64_tahoe:       "c2bdc1e026fa3db4e9049f5e04804f02b1db97407b84727c22ec2b6458f49085"
+    sha256 cellar: :any, arm64_sequoia:     "fabe91649b98ef0bd4f0e5c3ca470031f8b262e308e2404a595a3f2c24654289"
+    sha256 cellar: :any, arm64_linux:       "08a109141a0f468e4ea4f11915d1687e7371409aab5aa5c46c2f0d07ee380c1f"
+    sha256 cellar: :any, x86_64_linux:      "00dd117189f022a594cc82014505526d12ef73d6885d27ebcc4e3b9e4d08d822"
   end
 
   depends_on "rust" => :build # for jiter, polars, vl-convert
@@ -164,8 +164,8 @@ class Mycli < Formula
   end
 
   resource "openai" do
-    url "https://files.pythonhosted.org/packages/7c/91/2d5722388a50cc86e162779df5fbfe0afa652a6e2d5c9ee616e081a82098/openai-3.19.2.tar.gz"
-    sha256 "de185f9834ad064d965ec42bd0766731cf66bceea16a7670294a835d207019e6"
+    url "https://files.pythonhosted.org/packages/45/69/59a8efa0e41e497041305459546ce27423829448682be7c1d192c5242f5e/openai-3.23.0.tar.gz"
+    sha256 "47381c61622d4dbdc3c8492dad18628fd940b8fbd9cb1f89ed46cf0bb6795bb8"
   end
 
   resource "packaging" do
@@ -201,11 +201,6 @@ class Mycli < Formula
   resource "pycryptodomex" do
     url "https://files.pythonhosted.org/packages/c9/85/e24bf90972a30b0fcd16c73009add1d7d7cd9140c2498a68252028899e41/pycryptodomex-3.23.0.tar.gz"
     sha256 "71909758f010c82bc99b0abf4ea12012c98962fbf0583c2164f8b84533c2e4da"
-  end
-
-  resource "pyfzf" do
-    url "https://files.pythonhosted.org/packages/d4/4c/c0c658a1e1e9f0e01932990d7947579515fe048d0a515f07458ecd992b8f/pyfzf-0.3.1.tar.gz"
-    sha256 "dd902e34cffeca9c3082f96131593dd20b4b3a9bba5b9dde1b0688e424b46bd2"
   end
 
   resource "pygments" do

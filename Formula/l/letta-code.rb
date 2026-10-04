@@ -1,16 +1,16 @@
 class LettaCode < Formula
   desc "Memory-first coding agent"
   homepage "https://docs.letta.com/letta-code"
-  url "https://registry.npmjs.org/@letta-ai/letta-code/-/letta-code-0.33.6.tgz"
-  sha256 "6b6c1e913a1ea008462fe598b510e94f80371b1325dd273c490335baf11042e6"
+  url "https://registry.npmjs.org/@letta-ai/letta-code/-/letta-code-0.34.2.tgz"
+  sha256 "047b8be942d73d3127e2b9ea56ccbf02872ea254aafda806de7bdf256c29ecb7"
   license "Apache-2.0"
 
   bottle do
-    sha256               arm64_golden_gate: "f45f6f5b013391574008ea589b2c99e55a457cda03f04e8ad1f8b3eda638d216"
-    sha256               arm64_tahoe:       "769be231ffc5918a8b34b4754fa702b45ed6dcf7cfd579f9be9e56213f74b816"
-    sha256               arm64_sequoia:     "a2a379eff07e0cb328bfa1b6ff15e5c8c88725e73513f2b3aae8fc054e62b7e0"
-    sha256 cellar: :any, arm64_linux:       "d604d94082cbff970ff40d4e7a0475061103ef10ccb4435dc527592e30d92d90"
-    sha256 cellar: :any, x86_64_linux:      "9f7066133b5dc8556d72b4fc753cd6dbfe3ddf1b2fb9a9b1efec3eed1ff729d3"
+    sha256               arm64_golden_gate: "8a86235e2df17df96199cbcc7b91e47e742ed0a05bdfe29340b3d3c90aad3671"
+    sha256               arm64_tahoe:       "952fdc387d173cdef4bf49d9553ef72a245decf5ca134d4842c043d06268e6f2"
+    sha256               arm64_sequoia:     "cbb6d88e6464bf63a112807ea9e77bc809273ae75d91c06d2452ac099ba14cd1"
+    sha256 cellar: :any, arm64_linux:       "63e63061f918113ab85adf5a8dfb64ffb73e23b0140bbcb016821b8525d7a4b3"
+    sha256 cellar: :any, x86_64_linux:      "d83267458427372b6a19b273451d1b170f6447a69964a81451ac9ac8e2fb8b65"
   end
 
   depends_on "pkgconf" => :build
@@ -24,8 +24,8 @@ class LettaCode < Formula
   end
 
   resource "node-gyp" do
-    url "https://registry.npmjs.org/node-gyp/-/node-gyp-13.0.2.tgz"
-    sha256 "1b1524d914331bd01312729e31a828192d53af84e113dacb6e36afabb6c21a6d"
+    url "https://registry.npmjs.org/node-gyp/-/node-gyp-13.1.0.tgz"
+    sha256 "15663ca4944844139023390f057e86f1897d855959ea7e96f151d4873be8c71f"
 
     livecheck do
       url :url

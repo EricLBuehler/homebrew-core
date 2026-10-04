@@ -1,19 +1,17 @@
 class Caddy < Formula
   desc "Powerful, enterprise-ready, open source web server with automatic HTTPS"
   homepage "https://caddyserver.com/"
-  url "https://github.com/caddyserver/caddy/archive/refs/tags/v2.11.4.tar.gz"
-  sha256 "2c3d02078286a6282cdb4d1d8744077788d556659dac0b64d8ed5886a7e5aeb9"
+  url "https://github.com/caddyserver/caddy/archive/refs/tags/v2.11.7.tar.gz"
+  sha256 "86e39de5fa0bc433a9cd574a00e7751059903401f3389c61f8937fd0ad0180f5"
   license "Apache-2.0"
   head "https://github.com/caddyserver/caddy.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_golden_gate: "165c0d19019620d068ae6db54d0707b80dfa9966799b47eec133cfb8010c6d85"
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:       "8e9aa3be3d01ea8128bd16cdb0de0b274da276dba4882addedd43b8748ad94d3"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia:     "8e9aa3be3d01ea8128bd16cdb0de0b274da276dba4882addedd43b8748ad94d3"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:      "8e9aa3be3d01ea8128bd16cdb0de0b274da276dba4882addedd43b8748ad94d3"
-    sha256 cellar: :any_skip_relocation, sonoma:            "27b2aa14d92c02c159a265f1604240cfd55963e6ba5563b7ccac752937624859"
-    sha256 cellar: :any_skip_relocation, arm64_linux:       "24e586256f93f81b80de38b8bce008cbaf788f925b81e6aedecf98c7d3612385"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:      "ccfdb7ee4df4bbcbcba207c4a7009fc7d5859435df1277c784421b67d7127639"
+    sha256 cellar: :any_skip_relocation, arm64_golden_gate: "7afb55ae0f5a46a9d76a8278ef999a8f7abc8fdf7fe55b7dae615af5de1ab5b5"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:       "7afb55ae0f5a46a9d76a8278ef999a8f7abc8fdf7fe55b7dae615af5de1ab5b5"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia:     "7afb55ae0f5a46a9d76a8278ef999a8f7abc8fdf7fe55b7dae615af5de1ab5b5"
+    sha256 cellar: :any_skip_relocation, arm64_linux:       "58964220f1b630583efd669d7181a7691d962ab8ee3c33c7c1025085534a2660"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:      "4b2f7b09cead0281082a9cc84fcd0a118f33fab46409a3ad6a9ac921b8d2f1ea"
   end
 
   depends_on "go" => :build
@@ -21,6 +19,11 @@ class Caddy < Formula
   resource "xcaddy" do
     url "https://github.com/caddyserver/xcaddy/archive/refs/tags/v0.4.5.tar.gz"
     sha256 "53c6a9e29965aaf19210ac6470935537040e782101057a199098feb33c2674f8"
+
+    livecheck do
+      url :url
+      strategy :github_latest
+    end
   end
 
   # `test do` block runs a local server

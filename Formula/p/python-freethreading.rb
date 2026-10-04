@@ -1,8 +1,8 @@
 class PythonFreethreading < Formula
   desc "Interpreted, interactive, object-oriented programming language"
   homepage "https://www.python.org/"
-  url "https://www.python.org/ftp/python/3.14.7/Python-3.14.7.tgz"
-  sha256 "62859805f6fdf25e2bcbf3fa3217801e1996887ca33e6a2af80674bdfa2dbe07"
+  url "https://www.python.org/ftp/python/3.14.8/Python-3.14.8.tgz"
+  sha256 "a65b20a728f169f4e66ae143f40b1bd3d33c38d770251663f627c9767b79b210"
   license "Python-2.0"
 
   livecheck do
@@ -10,18 +10,16 @@ class PythonFreethreading < Formula
   end
 
   bottle do
-    sha256 arm64_golden_gate: "13b066948f3410a874e4a653dac74da05c73723a2284341ae773341cf2f50671"
-    sha256 arm64_tahoe:       "f5e84a9af0aa65cb85f13c8f5bde598f0784cefbf2de45aee6b74c17a6c0bb16"
-    sha256 arm64_sequoia:     "e04554eb94cd8d67616f5d072cdb96dc57e634ecc93132250d9f43d4216530a3"
-    sha256 arm64_sonoma:      "8e5052d2ccb46b4bfe192b6b0a15bf703a1c84baa4c6b406ae37711a7117a116"
-    sha256 tahoe:             "f0d12c3d42be0cf4c272b3e03979b5da09214653141d5d0f6cef75786a211c78"
-    sha256 sequoia:           "c4f997b2bb8a6dbbfeb1d41de181acd3094a63386287b4c5c8fc64ad4f47f736"
-    sha256 sonoma:            "56dc95e40feaab6cb0ca25d0f00e9fc8682315118cc670420becd16a140fc7e3"
-    sha256 arm64_linux:       "27c709fcae76d581b7897a78ab06544d74fff939273bb38ed8a8e1eee24128ea"
-    sha256 x86_64_linux:      "b0a23ba00dd02f7f38c3ae9489e9f8fc061d179a9ea271052f36b8a12847814e"
+    rebuild 1
+    sha256 arm64_golden_gate: "de96ec8574ef2a6f0e9707b93ef16574e96b05c6f37386c3407bf88bcdf22b91"
+    sha256 arm64_tahoe:       "6e912549b20939bdd3af2e2a368a7f1b4065eba821ea0d707a47ddab07e06056"
+    sha256 arm64_sequoia:     "19803a1d8caa67c12f3040d6e3cbbefc91378a1872357950bb6c7d4562804b06"
+    sha256 arm64_linux:       "dc241e177ad06c8cb4118174329b90997c26243cf440edf76dd8a9ffc6bf2daf"
+    sha256 x86_64_linux:      "48476bcf72c455edab1de6f5f01611e7dae7ffc25f43240afaac1bdf53a4c27f"
   end
 
   depends_on "pkgconf" => :build
+  depends_on "ca-certificates" => :no_linkage
   depends_on "mpdecimal"
   depends_on "openssl@3"
   depends_on "sqlite"
@@ -34,13 +32,10 @@ class PythonFreethreading < Formula
   uses_from_macos "expat", since: :sequoia
   uses_from_macos "libedit"
   uses_from_macos "libffi"
-  uses_from_macos "libxcrypt"
   uses_from_macos "ncurses"
 
   on_linux do
     depends_on "gdbm"
-    depends_on "libnsl"
-    depends_on "libtirpc"
     depends_on "zlib-ng-compat"
   end
 
@@ -48,8 +43,8 @@ class PythonFreethreading < Formula
                 extra_packages: %w[flit-core pip wheel]
 
   resource "flit-core" do
-    url "https://files.pythonhosted.org/packages/46/ef/34533186e76c526d9ec17a1ad9a10c7354cbfb20f51583cc36dfe4bdccd0/flit_core-4.0.2.tar.gz"
-    sha256 "b6929defd93884b584d7c87829e0e7b5c26ed6be17b0b873979019314aa841c8"
+    url "https://files.pythonhosted.org/packages/e7/91/add211b38c357bf1b94900b4f79c34661a92be65c0243d2b0a3393c5092d/flit_core-4.1.0.tar.gz"
+    sha256 "62e12b63ead8335b37f59fabb977c7167fe476dafb5e41785dfa8c9aff843bc6"
   end
 
   resource "packaging" do
@@ -63,8 +58,8 @@ class PythonFreethreading < Formula
   end
 
   resource "wheel" do
-    url "https://files.pythonhosted.org/packages/39/62/75f18a0f03b4219c456652c7780e4d749b929eb605c098ce3a5b6b6bc081/wheel-0.47.0.tar.gz"
-    sha256 "cc72bd1009ba0cf63922e28f94d9d83b920aa2bb28f798a31d0691b02fa3c9b3"
+    url "https://files.pythonhosted.org/packages/d0/20/50ed6bdf27dec98b568a8ae25dc599f35baa3d9709f9e83fd1edb56b9a90/wheel-0.48.0.tar.gz"
+    sha256 "94800765601e9171bf5d58d066e640662842bcedcbab982b2c90787a2c987322"
   end
 
   # Modify default sysconfig to match the brew install layout.
@@ -85,18 +80,14 @@ class PythonFreethreading < Formula
     end
   end
 
-  def site_packages_cellar
-    lib_cellar/"site-packages"
-  end
+  def site_packages_cellar = lib_cellar/"site-packages"
 
   # The HOMEBREW_PREFIX location of site-packages.
-  def site_packages
-    HOMEBREW_PREFIX/"lib/python#{version.major_minor}t/site-packages"
-  end
+  def site_packages = HOMEBREW_PREFIX/"lib/python#{version.major_minor}t/site-packages"
 
-  def python3
-    bin/"python#{version.major_minor}t"
-  end
+  def python3 = bin/"python#{version.major_minor}t"
+
+  deny_network_access!
 
   def install
     # Unset these so that installing pip and setuptools puts them where we want
@@ -176,7 +167,7 @@ class PythonFreethreading < Formula
 
     # Disabled modules - provided in separate formulae
     args += %w[
-      py_cv_module__tkinter=disabled
+      py_cv_module__tkinter=n/a
     ]
 
     system "./configure", *args
@@ -296,6 +287,11 @@ class PythonFreethreading < Formula
            bundled/"pip-#{resource("pip").version}-py3-none-any.whl",
            libexec/"wheel-#{resource("wheel").version}-py3-none-any.whl"
 
+    # Use brewed ca-certificates PEM file instead of the bundled copy
+    certifi = root_site_packages/"pip/_vendor/certifi"
+    rm certifi/"cacert.pem"
+    certifi.install_symlink Formula["ca-certificates"].pkgetc/"cert.pem" => "cacert.pem"
+
     # pip install with --target flag will just place the bin folder into the
     # target, so move its contents into the appropriate location
     mv (root_site_packages/"bin").children, bin
@@ -381,12 +377,6 @@ class PythonFreethreading < Formula
                f'     You should `unset PYTHONPATH` to fix this.')
       # Only do this for a brewed python:
       if os.path.realpath(sys.executable).startswith('#{rack}'):
-          # Shuffle /Library site-packages to the end of sys.path
-          library_site = '/Library/Python/#{version.major_minor}t/site-packages'
-          library_packages = [p for p in sys.path if p.startswith(library_site)]
-          sys.path = [p for p in sys.path if not p.startswith(library_site)]
-          # .pth files have already been processed so don't use addsitedir
-          sys.path.extend(library_packages)
           # the Cellar site-packages is a symlink to the HOMEBREW_PREFIX
           # site_packages; prefer the shorter paths
           long_prefix = re.compile(r'#{rack}/(?:[0-9\\._abrc]+/Frameworks/PythonT\\.framework/Versions/#{version.major_minor}/)?lib/python#{version.major_minor}t/site-packages')
@@ -422,7 +412,7 @@ class PythonFreethreading < Formula
       Python has been installed as
         #{HOMEBREW_PREFIX}/bin/#{python3.basename}
 
-      See: https://docs.brew.sh/Homebrew-and-Python
+      See: https://docs.brew.sh/Language-Runtimes-and-Packages#python
     EOS
   end
 

@@ -1,30 +1,36 @@
 class Kingfisher < Formula
   desc "MongoDB's blazingly fast secret scanning and validation tool"
   homepage "https://mongodb.github.io/kingfisher/"
-  url "https://github.com/mongodb/kingfisher/archive/refs/tags/v2.7.0.tar.gz"
-  sha256 "75a0f278623f7900b9e2e15ad860a1ab110051c27461ba785fa2992235855664"
+  url "https://github.com/mongodb/kingfisher/archive/refs/tags/v2.10.0.tar.gz"
+  sha256 "d98dd11d6ed2546f95f0d5f7404971148fb9f5d6e1e0b2b61168692138f640a7"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_golden_gate: "d5418c671eb74f39cc3ad83f0909eb16cc4c6a0a2280a60919b275d42c8684e3"
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:       "738bda022f4d96c6917ea3d9e9db0e15e83d803005110af9bfa951cbfdc3464e"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia:     "457ce643300358d95b6a45811ebb74e1012f26b09a19b4b527aa95ea450e85f6"
-    sha256 cellar: :any,                 arm64_linux:       "acad87e21f2d99703cb3224cca3552d1435f0f6c4d41bbefff52b8a521eb9881"
-    sha256 cellar: :any,                 x86_64_linux:      "4f13b7216b032c5bf3c2657b122b64c5f61392d9ec9b74c34d8f9a374cc6bbd4"
+    sha256 cellar: :any, arm64_golden_gate: "8e13ff8fe5b08375a831a52e9a6e7da099be66990b49fd9bbf5f271b0b1af2c2"
+    sha256 cellar: :any, arm64_tahoe:       "63b820fee1e1cce88156f601eba475a0de0d7ebcfea4edf559df8218220faee8"
+    sha256 cellar: :any, arm64_sequoia:     "099beca67403568b2522b4052c8209905d8af2bc21d4d0bd8d0b20793b389388"
+    sha256 cellar: :any, arm64_linux:       "88d31febcfd3afa05268973f9751a3a1af1e005e0744f678ffadb63cad804a1c"
+    sha256 cellar: :any, x86_64_linux:      "3193338a0b30ad8c0e7f81cc953c5387793cddd4b44a696a6005cd7aa4ec4ee8"
   end
 
-  depends_on "boost" => :build
-  depends_on "cmake" => :build
   depends_on "pkgconf" => :build
   depends_on "rust" => :build
+  depends_on "vectorscan" => :build # kingfisher-vectorscan uses static library
+  depends_on "aws-lc"
 
-  uses_from_macos "bzip2"
+  uses_from_macos "sqlite"
 
-  on_linux do
-    depends_on "openssl@4" => :build
+  allow_network_access! :test
+
+  def fetch
+    system "cargo", "fetch", *std_cargo_fetch_args
   end
 
   def install
+    ENV["AWS_LC_SYS_USE_SYSTEM"] = "1"
+    ENV["HYPERSCAN_ROOT"] = formula_opt_prefix("vectorscan")
+    ENV["LIBSQLITE3_SYS_USE_PKG_CONFIG"] = "1"
+
     args = ["--features=system-alloc"] if OS.mac?
     system "cargo", "install", *args, *std_cargo_args
   end

@@ -3,18 +3,17 @@ class Fanficfare < Formula
 
   desc "Download fanfiction and original stories as e-books"
   homepage "https://github.com/JimmXinu/FanFicFare"
-  url "https://files.pythonhosted.org/packages/99/05/3c6e7cfe337f247e902c2220d4b43a1bf9f25cf0b670ce71ba2253e1d545/fanficfare-4.61.0.tar.gz"
-  sha256 "84bd204b5458972f18ca22dffd4a4b67778ed6a85330ee4e5369cc5109071b85"
+  url "https://files.pythonhosted.org/packages/92/24/a394ed6de5daf39237ce371cac34a72cd6936608b278d7568a43ef99c288/fanficfare-4.62.0.tar.gz"
+  sha256 "eee865d46b0b863cab470c6c7e60d59e102d25d4cea096ca08491337ab81b69e"
   license "Apache-2.0"
   head "https://github.com/JimmXinu/FanFicFare.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any, arm64_golden_gate: "8f8cec45b9ffda9643c8505cc748a3a8b8da041a12a821cf5982b31f7d939128"
-    sha256 cellar: :any, arm64_tahoe:       "3d0413052359b2659e501f0833373d80abbf0d9a6faa6a7da7e6186cf6b1bf4c"
-    sha256 cellar: :any, arm64_sequoia:     "7043178c014713522ea6599ac064b2121cf5866a27d41da90b85e0353166a546"
-    sha256 cellar: :any, arm64_sonoma:      "5087315ed3619a5a66dc248efc1b640034b9c5896fa00f2cd9239e910157d28c"
-    sha256 cellar: :any, arm64_linux:       "ed52cbdc1b7851da44565bb938970e8b40b8affd252ae29e8a9aab01c12d48c2"
-    sha256 cellar: :any, x86_64_linux:      "bd3636467b1f9f69ac47695b26ba403a31a6ede71d72be14542e761fe0e2f385"
+    sha256 cellar: :any, arm64_golden_gate: "fb172ec23fbb462d108f3b49cfd9e8eac0e2afbb3dff1223e7714c6993f7f88e"
+    sha256 cellar: :any, arm64_tahoe:       "79fffb8b07d48ee4e85d0e166540e612706944369d04682fba3a7550021ec2d9"
+    sha256 cellar: :any, arm64_sequoia:     "46c94b4c03e8d7ca1f5cd22266b150750abf368102d83bbf86e797377c2f0040"
+    sha256 cellar: :any, arm64_linux:       "22b152b2648d9b375ed38fef292a4e1da7c50ab1c38482611d654f3b573e51ec"
+    sha256 cellar: :any, x86_64_linux:      "66e46cc88b5bfde5d9c3d8e1ca8884fb413c3c0db43429f8bffd14dad837f7a3"
   end
 
   depends_on "pkgconf" => :build
@@ -46,8 +45,8 @@ class Fanficfare < Formula
   end
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/e5/3f/143b048436775b0f76ac3eec145c019e8173ccc2885c8f20319b996d5e83/charset_normalizer-3.5.1.tar.gz"
-    sha256 "6117b84ea48435e5356dc737f5121485c30920ba43375fa7b434fd753df0eac3"
+    url "https://files.pythonhosted.org/packages/33/1c/f41d4e74c28ab327ff3acd36053f7ea506c55872d7a90b0fa71aa3ab0c89/charset_normalizer-3.5.2.tar.gz"
+    sha256 "39de2a259fc954455c57274dc94c79d5842774e1247a016aff30bc0efed0f4ef"
   end
 
   resource "cloudscraper" do
@@ -82,13 +81,13 @@ class Fanficfare < Formula
   end
 
   resource "idna" do
-    url "https://files.pythonhosted.org/packages/5f/f7/abb373e5757eaec4b922b92f97ec8d6d7e057cf06778247604fbc4e7c3f3/idna-3.19.tar.gz"
-    sha256 "5e0811a4383b21dc5838069f801c4fb62113b7447663d2530d2bd6e77b49bf15"
+    url "https://files.pythonhosted.org/packages/f5/08/8eea9d4b8302028f3abb2c0813953f7aec26d33b7a8960ed760e65ff29fa/idna-3.20.tar.gz"
+    sha256 "a7db850025b95ded1eae8a46181a1a6c56c92c96f0e2b005d9ff8dc0210cab44"
   end
 
   resource "pyparsing" do
-    url "https://files.pythonhosted.org/packages/f3/91/9c6ee907786a473bf81c5f53cf703ba0957b23ab84c264080fb5a450416f/pyparsing-3.3.2.tar.gz"
-    sha256 "c777f4d763f140633dcb6d8a3eda953bf7a214dc4eff598413c070bcdc117cbc"
+    url "https://files.pythonhosted.org/packages/e4/11/b213bebff182584360cb8d17c72c1677fec5c5c228de439e63bcf8ab1c8f/pyparsing-3.3.3.tar.gz"
+    sha256 "928ae7e20211f3b6f3915a72f06a0cfd29ab9d24279dd6346b6b1a7146397d36"
   end
 
   resource "requests" do
@@ -112,8 +111,8 @@ class Fanficfare < Formula
   end
 
   resource "soupsieve" do
-    url "https://files.pythonhosted.org/packages/69/99/a6ca3beb3ccacb41fb3321d8a60e5566f9e6467601ef8eba6a17e1b89778/soupsieve-2.9.2.tar.gz"
-    sha256 "4a55d8cf158a9c2e587fa4922f1bbb91d68ac829e2d6f25403a85747c71daf74"
+    url "https://files.pythonhosted.org/packages/71/c3/1b817965ac12dc002d7c9cd7dfffdd7d4fbf9b45763ef2ffe7b86ee94670/soupsieve-2.10.tar.gz"
+    sha256 "49e9380d7d2905463583bafe285e818c7366a9ed7b3aee221c1ac79c905d8bc0"
   end
 
   resource "typing-extensions" do
@@ -122,8 +121,8 @@ class Fanficfare < Formula
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/53/0c/06f8b233b8fd13b9e5ee11424ef85419ba0d8ba0b3138bf360be2ff56953/urllib3-2.7.0.tar.gz"
-    sha256 "231e0ec3b63ceb14667c67be60f2f2c40a518cb38b03af60abc813da26505f4c"
+    url "https://files.pythonhosted.org/packages/e3/05/b17359e1cefb4f909b5e40b1b90a496d987258916dbbf88e842c729f510e/urllib3-2.8.0.tar.gz"
+    sha256 "63bf2ead4c879426ebf22ef2a781eeb4aa3b4ae798a0435506f8687fd5bb9b63"
   end
 
   resource "webencodings" do

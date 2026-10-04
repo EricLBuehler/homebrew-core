@@ -1,8 +1,8 @@
 class WasmTools < Formula
   desc "Low level tooling for WebAssembly in Rust"
   homepage "https://github.com/bytecodealliance/wasm-tools"
-  url "https://github.com/bytecodealliance/wasm-tools/archive/refs/tags/v1.259.0.tar.gz"
-  sha256 "c3ee7f0757d1220bd4b46260c4fad4549ceea211f91d706649c1ba24ca7fdc17"
+  url "https://github.com/bytecodealliance/wasm-tools/archive/refs/tags/v1.261.0.tar.gz"
+  sha256 "fa78e7cf1f6e5e76c8590f950a55256fd77e5f1cd55392d9b2da25b8a89b4e5c"
   license any_of: [
     { "Apache-2.0" => { with: "LLVM-exception" } },
     "Apache-2.0",
@@ -16,12 +16,11 @@ class WasmTools < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_golden_gate: "6568a78ca72b9c983973250bf249714da22d886e5b78910919c7c75f12d4a9bf"
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:       "793aa16b013417465a4e463054fdaa810050b477c6b3e23bfc4158359c3f3028"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia:     "a0b52727a58c491fc116ecee8c3d3feb2904fdd3b309bac7641c8d79d3729ec9"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:      "f30e43f626c4feb07c91da6458d82adaad3bc3700c1fc1b543628872a387c86a"
-    sha256 cellar: :any,                 arm64_linux:       "c7dc84f1ed3db946f4ae1ef9d2a799e08a3040278aab9c4dc0842cdc0e4d6ec0"
-    sha256 cellar: :any,                 x86_64_linux:      "21575b67bed36f24015f5fa28ba65c1cfba4294c49206b79f3f4baf7ab1889f4"
+    sha256 cellar: :any_skip_relocation, arm64_golden_gate: "2edb300b5c2b18b6024a97fc5aa7c79526c07834852e63b974ba128bba6da277"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:       "174ea331dbc6bd3bfddf16999754edfba048a8ac390b549cac0f28a995612f5d"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia:     "743aac9d0adb78e94cc280344456a042a6879fc2dcfec66ea596cd45386f2ece"
+    sha256 cellar: :any,                 arm64_linux:       "939365fc926f549d509bf861103371eb2a8c12400f1ba848bb47eb3cb2fe2b89"
+    sha256 cellar: :any,                 x86_64_linux:      "f0c1ca6e0d2c7ed623cb4c7e6e9378be33525845d5500f836b87dd8491972719"
   end
 
   depends_on "rust" => :build
